@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Jhonathan Chaves Manzano</title>
+
+    <!-- CDN Tailwind Css -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Font Awesome Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Ocultar el cursor predeterminado */
+        * {
+            cursor: none !important;
+        }
+        
+        /* Estilos para el cursor personalizado */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #000;
+            border-radius: 50%;
+            position: fixed;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 0.1s ease;
+            transition-property: width, height, border;
+        }
+        
+        .cursor-dot {
+            width: 4px;
+            height: 4px;
+            background-color: #000;
+            border-radius: 50%;
+            position: fixed;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 10000;
+            transition: width 0.1s, height 0.1s;
+        }
+        
+        /* Estilos para cuando el cursor está sobre enlaces */
+        .cursor-grow {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0, 0, 0, 0.1);
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body class="bg-gray-200 text-dark font-sans">
+    <!-- Elementos del cursor personalizado -->
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+
+    <nav class="bg-white shadow-md rounded-2xl mx-auto max-w-[90%] mt-6 fixed left-0 right-0 py-4 px-20 z-10">
+        <div class="mx-auto py-2">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="text-3xl font-sans font-bold text-dark">JC</div>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="sm:hidden">
+                    <button type="button" class="mobile-menu-button inline-flex items-center justify-center p-2 rounded-md text-dark hover:text-gray-300 hover:bg-gray-800 focus:outline-none" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Desktop menu -->
+                <div class="hidden sm:flex sm:items-center">
+                    <div class="flex space-x-8">
+                        <a href="#home" class="text-dark hover:text-indigo-400 px-3 py-2 text-xl font-medium">Inicio</a>
+                        <a href="#about" class="text-dark hover:text-indigo-400 px-3 py-2 text-xl font-medium">Sobre Mi</a>
+                        <a href="#projects" class="text-dark hover:text-indigo-400 px-3 py-2 text-xl font-medium">Projectos</a>
+                        <a href="#skills" class="text-dark hover:text-indigo-400 px-3 py-2 text-xl font-medium">Habilidades</a>
+                        <a href="#contact" class="text-dark hover:text-indigo-400 px-3 py-2 text-xl font-medium">Contacto</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu, show/hide based on menu state -->
+        <div class="mobile-menu hidden sm:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 bg-white rounded-lg mt-2">
+                <a href="#home" class="text-dark hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Inicio</a>
+                <a href="#about" class="text-dark hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Sobre Mi</a>
+                <a href="#projects" class="text-dark hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Projectos</a>
+                <a href="#skills" class="text-dark hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Habilidades</a>
+                <a href="#contact" class="text-dark hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Contactp</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center px-4">
+        <div class="max-w-4xl mx-auto text-center md:text-left">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-2/3">
+                    <h1 class="text-5xl md:text-7xl font-bold mb-2">
+                        Hola, Soy<br>
+                        <span class="text-6xl md:text-8xl">Jhonathan Chaves.</span>
+                    </h1>
+                    <p class="text-gray-400 text-2xl mt-4 mb-8">Full Stack Developer</p>
+                    
+                    <!-- Social Media Icons -->
+                    <div class="flex space-x-4 mt-8 justify-center md:justify-start">
+                        <a href="#" class="p-2 rounded-full border border-gray-700 hover:border-gray-500 transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="p-2 rounded-full border border-gray-700 hover:border-gray-500 transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="p-2 rounded-full border border-gray-700 hover:border-gray-500 transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/3 mt-8 md:mt-0">
+                    <div class="relative">
+                        <div class="w-48 h-48 md:w-56 md:h-56 rounded-full border-2 border-gray-700 flex items-center justify-center mx-auto">
+                            <span class="text-4xl">JC</span>
+                        </div>
+                        <div class="absolute top-0 left-0 w-full h-full rounded-full border border-gray-600 animate-pulse" style="animation-duration: 3s;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+        <!-- About Section -->
+        <section id="about" class="py-20 mx-auto max-w-[90%] my-10">
+            <div class="max-w-6xl mx-auto px-8">
+                <h2 class="text-4xl font-bold mb-12">Sobre Mi</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="relative group">
+                        <div class="absolute -inset-1  rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-300"></div>
+                        <div class="relative bg-gray-100 rounded-2xl overflow-hidden shadow-2xl">
+                            <img src="https://placehold.co/600x800" alt="Jhonathan Chaves" class="w-full h-auto transition-transform duration-500 group-hover:scale-105">
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                                <h3 class="text-white text-xl font-bold">Jhonathan Chaves Manzano</h3>
+                                <p class="text-gray-200">Full Stack Developer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-1 bg-indigo-600 mr-4"></div>
+                            <h3 class="text-2xl font-bold">Full Stack Developer</h3>
+                        </div>
+                        
+                        <p class="text-gray-600 mb-8 leading-relaxed">
+                            Mi experiencia en programación Front-End me ha proporcionado un entendimiento profundo de las tecnologías clave como HTML5, CSS3 y JavaScript. He colaborado estrechamente con equipos de desarrollo y diseñadores para crear sitios web receptivos y atractivos que brindan una experiencia de usuario excepcional. Mi habilidad para traducir diseños complejos en código limpio y eficiente me permite contribuir de manera significativa a proyectos interdisciplinarios.
+                        </p>
+                        
+                        <div class="mb-8 bg-gray-50 p-6 rounded-xl border border-gray-100 shadow-sm">
+                            <h4 class="text-xl font-semibold mb-4 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-600 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                                </svg>
+                                Detalles Personales
+                            </h4>
+                            <ul class="space-y-3 text-gray-600">
+                                <li class="flex items-start">
+                                    <span class="font-bold text-gray-800 min-w-[140px]">Nombre:</span> 
+                                    <span>Jhonathan Chaves Manzano</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="font-bold text-gray-800 min-w-[140px]">Edad:</span> 
+                                    <span>22 años</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="font-bold text-gray-800 min-w-[140px]">Localización:</span> 
+                                    <span>Armilla. Granada, España</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="font-bold text-gray-800 mr-2 min-w-[140px]">Correo Electrónico:</span> 
+                                    <span>developerjhony@gmail.com</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="flex space-x-4">
+                            <a href="#contact" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-xl transition-colors shadow-md hover:shadow-lg">
+                                Contáctame
+                            </a>
+                            <a href="#projects" class="inline-block bg-white border border-indigo-600 text-indigo-600 hover:bg-indigo-50 font-medium py-3 px-6 rounded-xl transition-colors">
+                                Ver Proyectos
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+</section>
+
+<!-- Education & Experience Section -->
+<section id="education-experience" class="py-20 mx-auto max-w-[90%] my-10">
+    <div class="max-w-6xl mx-auto px-8">
+        <h2 class="text-4xl font-bold mb-12">Educación / Experiencia</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <!-- Education Column -->
+            <div class="relative">
+                <h3 class="text-2xl font-bold mb-8 text-center md:text-left text-black">EDUCACIÓN</h3>
+                
+                <!-- Timeline -->
+                <div class="border-l-2 border-black ml-6 md:ml-4 pl-8 space-y-10">
+                    <!-- Education Item 1 -->
+                    <div class="relative education-item group">
+                        <!-- Timeline Dot -->
+                        <div class="absolute -left-[41px] top-0 w-6 h-6 bg-black rounded-full border-4 border-white"></div>
+                        <!-- Year Badge -->
+                        <div class="inline-block text-xs font-semibold text-white bg-black px-3 py-1 rounded-full mb-2">
+                            2019 - 2021
+                        </div>
+                        <!-- Content -->
+                        <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 group-hover:border-black hover:border-2">
+                            <div class="flex flex-col">
+                                <h4 class="text-xl font-bold mb-3 border-b border-gray-200 pb-2">I.E.S La Mojonera</h4>
+                                <div class="space-y-4">
+                                    <div>
+                                        <h5 class="font-semibold text-gray-800">Bachillerato de ciencias tecnológicas</h5>
+                                        <div class="flex items-center mt-1">
+                                            <span class="text-sm font-medium text-gray-600">Nota final:</span>
+                                            <span class="ml-2 bg-black text-white text-sm font-bold px-2 py-0.5 rounded">6.7</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Education Item 2 -->
+                    <div class="relative education-item group">
+                        <!-- Timeline Dot -->
+                        <div class="absolute -left-[41px] top-0 w-6 h-6 bg-black rounded-full border-4 border-white"></div>
+                        <!-- Year Badge -->
+                        <div class="inline-block text-xs font-semibold text-white bg-black px-3 py-1 rounded-full mb-2">
+                            2022 - 2024
+                        </div>
+                        <!-- Content -->
+                        <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 group-hover:border-black hover:border-2">
+                            <div class="flex flex-col">
+                                <h4 class="text-xl font-bold mb-3 border-b border-gray-200 pb-2">I.E.S Jaroso</h4>
+                                <div class="space-y-4">
+                                    <div>
+                                        <h5 class="font-semibold text-gray-800">Desarrollo de Aplicaciones Web</h5>
+                                        <div class="flex items-center mt-1">
+                                            <span class="text-sm font-medium text-gray-600">Nota final:</span>
+                                            <span class="ml-2 bg-black text-white text-sm font-bold px-2 py-0.5 rounded">8.6</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="pt-2 border-t border-gray-100">
+                                        <h5 class="font-semibold text-gray-800 mb-2">Proyecto Final</h5>
+                                        <div class="bg-gray-50 p-3 rounded-lg">
+                                            <div class="flex justify-between items-center mb-1">
+                                                <span class="text-sm font-medium text-gray-600">Nombre:</span>
+                                                <span class="font-semibold text-gray-800">Resmoke</span>
+                                            </div>
+                                            <div class="flex justify-between items-center">
+                                                <span class="text-sm font-medium text-gray-600">Nota:</span>
+                                                <span class="bg-black text-white text-sm font-bold px-2 py-0.5 rounded">8.6</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Education Item 3 -->
+                    <div class="relative education-item group">
+                        <!-- Timeline Dot -->
+                        <div class="absolute -left-[41px] top-0 w-6 h-6 bg-black rounded-full border-4 border-white"></div>
+                        <!-- Year Badge -->
+                        <div class="inline-block text-xs font-semibold text-white bg-black px-3 py-1 rounded-full mb-2">
+                            2018 - 2022
+                        </div>
+                        <!-- Content -->
+                        <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 group-hover:border-black hover:border-2">
+                            <div class="flex flex-col">
+                                <h4 class="text-xl font-bold mb-3 border-b border-gray-200 pb-2">I.E.S Padre Suárez</h4>
+                                <div class="space-y-4">
+                                    <div>
+                                        <h5 class="font-semibold text-gray-800">Desarrollo de Aplicaciones Multiplataforma</h5>
+                                        <div class="flex items-center mt-1">
+                                            <span class="text-sm font-medium text-gray-600">Nota final:</span>
+                                            <span class="ml-2 bg-black text-white text-sm font-bold px-2 py-0.5 rounded">9.2</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="pt-2 border-t border-gray-100">
+                                        <h5 class="font-semibold text-gray-800 mb-2">Proyecto Final</h5>
+                                        <div class="bg-gray-50 p-3 rounded-lg">
+                                            <div class="flex justify-between items-center mb-1">
+                                                <span class="text-sm font-medium text-gray-600">Nombre:</span>
+                                                <span class="font-semibold text-gray-800">Escape Pixel</span>
+                                            </div>
+                                            <div class="flex justify-between items-center">
+                                                <span class="text-sm font-medium text-gray-600">Nota:</span>
+                                                <span class="bg-black text-white text-sm font-bold px-2 py-0.5 rounded">Soon</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="relative mt-50 mb-10">
+                <h3 class="text-2xl font-bold mb-8 text-center md:text-left text-black">EXPERIENCIA</h3>
+                
+                <!-- Timeline -->
+                <div class="border-l-2 border-black ml-6 md:ml-4 pl-8 space-y-10">
+                    <!-- Experience Item 1 -->
+                    <div class="relative experience-item group">
+                        <!-- Timeline Dot -->
+                        <div class="absolute -left-[41px] top-0 w-6 h-6 bg-black rounded-full border-4 border-white"></div>
+                        <!-- Year Badge -->
+                        <div class="inline-block text-xs font-semibold text-white bg-black px-3 py-1 rounded-full mb-2">
+                            Mar 2023 - Actualidad
+                        </div>
+                        <!-- Content -->
+                        <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 group-hover:border-black hover:border-2">
+                            <div class="flex flex-col">
+                                <h4 class="text-xl font-bold mb-3 border-b border-gray-200 pb-2">Desarrollador</h4>
+                                <div class="space-y-4">
+                                    <div>
+                                        <h5 class="font-semibold text-gray-800">Kyndryl - Jornada completa</h5>
+                                        <p class="text-gray-600 mt-2">
+                                            Granada, Andalucía, España - Presencial
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Experience Item 2 -->
+                    <div class="relative experience-item group">
+                        <!-- Timeline Dot -->
+                        <div class="absolute -left-[41px] top-0 w-6 h-6 bg-black rounded-full border-4 border-white"></div>
+                        <!-- Year Badge -->
+                        <div class="inline-block text-xs font-semibold text-white bg-black px-3 py-1 rounded-full mb-2">
+                            Abr 2022 - Oct 2022
+                        </div>
+                        <!-- Content -->
+                        <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 group-hover:border-black hover:border-2">
+                            <div class="flex flex-col">
+                                <h4 class="text-xl font-bold mb-3 border-b border-gray-200 pb-2">Desarrollador web</h4>
+                                <div class="space-y-4">
+                                    <div>
+                                        <h5 class="font-semibold text-gray-800">Autónomo</h5>
+                                        <p class="text-gray-600 mt-2">
+                                            Granada, Andalucía, España - Remoto
+                                        </p>
+                                        <p class="text-gray-600 mt-3">
+                                            En este rol, me encargué de la creación de una aplicación web funcional de fácil diseño con un aspecto moderno y elegante, optimizada para soportar un alto tráfico de usuarios durante el inicio del evento.
+                                        </p>
+                                        <p class="text-gray-600 mt-3">
+                                            <span class="font-semibold">Aptitudes:</span> Laravel · Amazon Web Services (AWS) · Tailwind CSS
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Experience Item 3 -->
+                    <div class="relative experience-item group">
+                        <!-- Timeline Dot -->
+                        <div class="absolute -left-[41px] top-0 w-6 h-6 bg-black rounded-full border-4 border-white"></div>
+                        <!-- Year Badge -->
+                        <div class="inline-block text-xs font-semibold text-white bg-black px-3 py-1 rounded-full mb-2">
+                            Jul 2022 - Oct 2023
+                        </div>
+                        <!-- Content -->
+                        <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 group-hover:border-black hover:border-2">
+                            <div class="flex flex-col">
+                                <h4 class="text-xl font-bold mb-3 border-b border-gray-200 pb-2">Desarrollador</h4>
+                                <div class="space-y-4">
+                                    <div>
+                                        <h5 class="font-semibold text-gray-800">WhiteDrop SRL - Jornada completa</h5>
+                                        <p class="text-gray-600 mt-2">
+                                            Arezzo - Presencial
+                                        </p>
+                                        <p class="text-gray-600 mt-3">
+                                            Como estudiante en prácticas de grado superior en Desarrollo de Aplicaciones Web, mi compromiso es aplicar y ampliar mis conocimientos técnicos en un entorno profesional real. Bajo la supervisión de profesionales experimentados, mi labor se centra en participar en el desarrollo de aplicaciones web, desde la concepción inicial hasta el despliegue y mantenimiento.
+                                        </p>
+                                        <p class="text-gray-600 mt-3">
+                                            <span class="font-semibold">Aptitudes:</span> PHP · Optimización para motores de búsqueda (SEO) · WordPress · Angular · Desarrollo web
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 mx-auto max-w-[90%] my-10">
+        <div class="max-w-6xl mx-auto px-8">
+            <div class="flex justify-between items-center mb-12">
+                <h2 class="text-4xl font-bold">Proyectos</h2>
+                <a href="#" class="text-black hover:text-indigo-800 font-medium flex items-center">
+                    View All
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="rounded-2xl bg-white overflow-hidden relative shadow-2xl">
+                    <div class="absolute bg-white p-2 rounded-br-xl z-10 flex ">
+                        <a href="#" class="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-xs font-medium">Demo</a>
+                        <a href="#" class="px-3 py-1 bg-gray-100 ml-2 text-gray-800 rounded-full text-xs font-medium">GitHub</a>
+                    </div>
+                    <img src="src/innorp/21.png" alt="Driving Quiz" class="rounded w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">InnoRP</h3>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="rounded-2xl bg-white overflow-hidden relative shadow-2xl">
+                    <div class="absolute bg-white p-2 rounded-br-xl z-10 flex ">
+                        <a href="#" class="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-xs font-medium">Demo</a>
+                        <a href="#" class="px-3 py-1 bg-gray-100 ml-2 text-gray-800 rounded-full text-xs font-medium">GitHub</a>
+                    </div>
+                    <img src="src/portfolio/11.png" alt="Driving Quiz" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Portfolio Personal</h3>
+                    </div>
+                    <div class="absolute bottom-8 right-4  flex space-x-2">
+                        <button class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center shadow-md">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="rounded-2xl bg-white overflow-hidden relative shadow-2xl">
+                    <div class="absolute bg-white p-2 rounded-br-xl z-10 flex ">
+                        <a href="#" class=" cursor-not-allowed px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-xs font-medium">Demo</a>
+                        <a href="#" class="px-3 py-1 bg-gray-100 ml-2 text-gray-800 rounded-full text-xs font-medium">GitHub</a>
+                    </div>
+                    <img src="src/resmoke/1.png" alt="Driving Quiz" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Resmoke</h3>
+                    </div>
+                    <div class="absolute bottom-8 right-4  flex space-x-2">
+                        <button class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center shadow-md">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="rounded-2xl bg-white overflow-hidden relative shadow-2xl">
+                    <div class="absolute bg-white p-2 rounded-br-xl z-10 flex ">
+                        <a href="#" class="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-xs font-medium">Demo</a>
+                        <a href="#" class="px-3 py-1 bg-gray-100 ml-2 text-gray-800 rounded-full text-xs font-medium">GitHub</a>
+                    </div>
+                    <img src="src/boda/5.png" alt="Driving Quiz" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Invitación de boda online</h3>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="rounded-2xl bg-white overflow-hidden relative shadow-2xl">
+                    <div class="absolute bg-white p-2 rounded-br-xl z-10 flex ">
+                        <a href="#" class="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-xs font-medium">Demo</a>
+                        <a href="#" class="px-3 py-1 bg-gray-100 ml-2 text-gray-800 rounded-full text-xs font-medium">GitHub</a>
+                    </div>
+                    <img src="src/laFama/Captura de pantalla 2025-04-03 151850.png" alt="Driving Quiz" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">La fama RP</h3>
+                    </div>
+                    <div class="absolute bottom-8 right-4  flex space-x-2">
+                        <button class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center shadow-md">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="rounded-2xl bg-white overflow-hidden relative shadow-2xl">
+                    <div class="absolute bg-white p-2 rounded-br-xl z-10 flex ">
+                        <span class="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-xs font-medium">App</span>
+                        <span class="px-3 py-1 bg-gray-100 ml-2 text-gray-800 rounded-full text-xs font-medium">Technology</span>
+                    </div>
+                    <img src="https://placehold.co/600x400" alt="Driving Quiz" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Driving Quiz</h3>
+                    </div>
+                    <div class="absolute bottom-8 right-4  flex space-x-2">
+                        <button class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center shadow-md">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+<!-- Skills Section -->
+<section id="skills" class="py-20 mx-auto max-w-[90%] my-10">
+    <div class="max-w-6xl mx-auto px-8">
+        <h2 class="text-4xl font-bold mb-12">Mis Habilidades</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+            <!-- Frontend - Caja pequeña arriba izquierda -->
+            <div class="md:col-span-6 bg-white p-8 rounded-2xl shadow-sm">
+                <h3 class="text-xl font-bold mb-6">Frontend</h3>
+                <div class="flex flex-wrap gap-3">
+                    <div class="bg-black text-white px-4 py-2 rounded-md flex items-center">
+                        <i class="fab fa-html5 mr-2"></i>
+                        <span class="font-medium">HTML5</span>
+                    </div>
+                    <div class="bg-black text-white px-4 py-2 rounded-md flex items-center">
+                        <i class="fab fa-css3-alt mr-2"></i>
+                        <span class="font-medium">CSS3</span>
+                    </div>
+                    <div class="bg-black text-white px-4 py-2 rounded-md flex items-center">
+                        <i class="fab fa-css3 mr-2"></i>
+                        <span class="font-medium">Tailwind</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Lenguajes de Programación - Caja grande arriba derecha -->
+            <div class="md:col-span-6 md:row-span-2 bg-white p-8 rounded-2xl shadow-sm">
+                <h3 class="text-2xl font-bold mb-6">Lenguajes de Programación</h3>
+                <div class="flex flex-wrap gap-3">
+                    <div class="bg-black text-white px-4 py-2 rounded-md flex items-center">
+                        <i class="fab fa-java mr-2"></i>
+                        <span class="font-medium">Java</span>
+                    </div>
+                    <div class="bg-black text-white px-4 py-2 rounded-md flex items-center">
+                        <i class="fab fa-js-square mr-2"></i>
+                        <span class="font-medium">JavaScript</span>
+                    </div>
+                    <div class="bg-black text-white px-4 py-2 rounded-md flex items-center">
+                        <i class="fab fa-python mr-2"></i>
+                        <span class="font-medium">Python</span>
+                    </div>
+                    <div class="bg-black text-white px-4 py-2 rounded-md flex items-center">
+                        <i class="fab fa-php mr-2"></i>
+                        <span class="font-medium">PHP</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Frameworks - Caja pequeña abajo izquierda -->
+            <div class="md:col-span-6 bg-white p-8 rounded-2xl shadow-sm">
+                <h3 class="text-xl font-bold mb-6">Frameworks</h3>
+                <div class="flex flex-wrap gap-3">
+                    <div class="bg-black text-white px-4 py-2 rounded-md flex items-center">
+                        <i class="fab fa-react mr-2"></i>
+                        <span class="font-medium">React</span>
+                    </div>
+                    <div class="bg-black text-white px-4 py-2 rounded-md flex items-center">
+                        <i class="fab fa-angular mr-2"></i>
+                        <span class="font-medium">Angular</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bases de Datos - Caja pequeña arriba izquierda -->
+            <div class="md:col-span-6 bg-white p-8 rounded-2xl shadow-sm">
+                <h3 class="text-xl font-bold mb-6">Bases de Datos</h3>
+                <div class="flex flex-wrap gap-3">
+                    <div class="bg-black text-white px-4 py-2 rounded-md flex items-center">
+                        <i class="fas fa-database mr-2"></i>
+                        <span class="font-medium">MySQL</span>
+                    </div>
+                    <div class="bg-black text-white px-4 py-2 rounded-md flex items-center">
+                        <i class="fas fa-database mr-2"></i>
+                        <span class="font-medium">MongoDB</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Backend - Caja grande abajo derecha -->
+            <div class="md:col-span-6 md:row-span-2 bg-white p-8 rounded-2xl shadow-sm">
+                <h3 class="text-xl font-bold mb-6">Backend</h3>
+                <div class="flex flex-wrap gap-3">
+                    <div class="bg-black text-white px-4 py-2 rounded-md flex items-center">
+                        <i class="fab fa-laravel mr-2"></i>
+                        <span class="font-medium">Laravel</span>
+                    </div>
+                    <div class="bg-black text-white px-4 py-2 rounded-md flex items-center">
+                        <i class="fas fa-leaf mr-2"></i>
+                        <span class="font-medium">Spring Boot</span>
+                    </div>
+                    <div class="bg-black text-white px-4 py-2 rounded-md flex items-center">
+                        <i class="fab fa-node-js mr-2"></i>
+                        <span class="font-medium">Node.js</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Herramientas - Caja pequeña abajo izquierda -->
+            <div class="md:col-span-6 bg-white p-8 rounded-2xl shadow-sm">
+                <h3 class="text-xl font-bold mb-6">Herramientas</h3>
+                <div class="flex flex-wrap gap-3">
+                    <div class="bg-black text-white px-4 py-2 rounded-md flex items-center">
+                        <i class="fab fa-aws mr-2"></i>
+                        <span class="font-medium">AWS</span>
+                    </div>
+                    <div class="bg-black text-white px-4 py-2 rounded-md flex items-center">
+                        <i class="fas fa-server mr-2"></i>
+                        <span class="font-medium">Nginx</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section id="contact" class="h-screen rounded-2xl max-w-[90%] flex flex-col justify-center items-center bg-white mx-auto relative">
+        <!-- Correo en la esquina superior derecha -->
+        <div class="absolute top-20 right-30">
+            <a href="mailto:developerjhony@gmail.com" class="text-lg underline font-bold hover:underline-offset-10 hover:text-gray-600">
+                developerjhony@gmail.com
+            </a>
+        </div>
+    
+        <!-- Texto principal -->
+        <div class="text-center">
+            <a href="mailto:developerjhony@gmail.com"
+                class="text-7xl md:text-9xl font-[Arial] font-bold flex items-center hover:text-gray-600 transition-colors">
+                GET IN TOUCH 
+            </a>
+        </div>
+    
+        <!-- Línea decorativa -->
+        <div class="w-[90%] h-[4px] bg-black mt-6"></div>
+        
+        <!-- Enlace a Fiverr -->
+        <div class="mt-20">
+            <a href="https://www.fiverr.com/yourusername" target="_blank" 
+               class=" text-dark px-8 py-4 border-b-4 text-xl font-bold uppercase hover:text-gray-600 transition-colors font-[Arial] flex items-center">
+                <i class="fab fa-fiverr mr-3"></i>Contrátame aquí
+            </a>
+        </div>
+    </section>
+    
+    
+
+    <footer class="bg-white rounded-2xl shadow-xl mx-auto max-w-[90%] my-10 py-12">
+            
+            <!-- Copyright -->
+            <div class="px-12 border-gray-200">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-600 text-sm mb-4 md:mb-0">© 2025 Jhonathan Chaves. Todos los derechos reservados.</p>
+                    <div class="flex space-x-6">
+                        <div class="text-3xl font-sans font-bold text-dark">JC</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Cursor personalizado
+        document.addEventListener('DOMContentLoaded', function() {
+            const cursor = document.querySelector('.cursor');
+            const cursorDot = document.querySelector('.cursor-dot');
+            
+            document.addEventListener('mousemove', function(e) {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                
+                // El punto central sigue al cursor sin retraso
+                cursorDot.style.left = e.clientX + 'px';
+                cursorDot.style.top = e.clientY + 'px';
+            });
+            
+            // Efecto al pasar sobre enlaces y botones
+            const links = document.querySelectorAll('a, button, .cursor-pointer');
+            links.forEach(link => {
+                link.addEventListener('mouseenter', () => {
+                    cursor.classList.add('cursor-grow');
+                });
+                
+                link.addEventListener('mouseleave', () => {
+                    cursor.classList.remove('cursor-grow');
+                });
+            });
+            
+            // Ocultar cuando el cursor sale de la ventana
+            document.addEventListener('mouseout', function(e) {
+                if (e.relatedTarget === null) {
+                    cursor.style.display = 'none';
+                    cursorDot.style.display = 'none';
+                }
+            });
+            
+            document.addEventListener('mouseover', function() {
+                cursor.style.display = 'block';
+                cursorDot.style.display = 'block';
+            });
+            
+            // Efecto al hacer clic
+            document.addEventListener('mousedown', function() {
+                cursor.style.transform = 'translate(-50%, -50%) scale(0.9)';
+                cursorDot.style.transform = 'translate(-50%, -50%) scale(0.9)';
+            });
+            
+            document.addEventListener('mouseup', function() {
+                cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                cursorDot.style.transform = 'translate(-50%, -50%) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
