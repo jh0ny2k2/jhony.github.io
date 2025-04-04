@@ -57,7 +57,7 @@
     <div class="cursor"></div>
     <div class="cursor-dot"></div>
 
-    <nav class="bg-white shadow-md rounded-2xl mx-auto max-w-[90%] mt-6 fixed left-0 right-0 py-4 px-20 z-10">
+    <nav class="bg-white shadow-md rounded-2xl mx-auto max-w-[90%] mt-6 fixed left-0 right-0 py-4 px-4 md:px-20 z-10">
         <div class="mx-auto py-2">
             <div class="flex justify-between items-center">
                 <div class="flex items-center">
@@ -65,8 +65,8 @@
                 </div>
                 
                 <!-- Mobile menu button -->
-                <div class="sm:hidden">
-                    <button type="button" class="mobile-menu-button inline-flex items-center justify-center p-2 rounded-md text-dark hover:text-gray-300 hover:bg-gray-800 focus:outline-none" aria-expanded="false">
+                <div class="block sm:hidden">
+                    <button type="button" class="mobile-menu-button inline-flex items-center justify-center p-2 rounded-md text-dark hover:text-gray-600 hover:bg-gray-100 focus:outline-none" aria-expanded="false">
                         <span class="sr-only">Open main menu</span>
                         <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -76,12 +76,12 @@
                 
                 <!-- Desktop menu -->
                 <div class="hidden sm:flex sm:items-center">
-                    <div class="flex space-x-8">
-                        <a href="#home" class="text-dark hover:text-indigo-400 px-3 py-2 text-xl font-medium">Inicio</a>
-                        <a href="#about" class="text-dark hover:text-indigo-400 px-3 py-2 text-xl font-medium">Sobre Mi</a>
-                        <a href="#projects" class="text-dark hover:text-indigo-400 px-3 py-2 text-xl font-medium">Projectos</a>
-                        <a href="#skills" class="text-dark hover:text-indigo-400 px-3 py-2 text-xl font-medium">Habilidades</a>
-                        <a href="#contact" class="text-dark hover:text-indigo-400 px-3 py-2 text-xl font-medium">Contacto</a>
+                    <div class="flex space-x-4 md:space-x-8">
+                        <a href="#home" class="text-dark hover:text-indigo-400 px-3 py-2 text-base md:text-xl font-medium">Inicio</a>
+                        <a href="#about" class="text-dark hover:text-indigo-400 px-3 py-2 text-base md:text-xl font-medium">Sobre Mi</a>
+                        <a href="#projects" class="text-dark hover:text-indigo-400 px-3 py-2 text-base md:text-xl font-medium">Projectos</a>
+                        <a href="#skills" class="text-dark hover:text-indigo-400 px-3 py-2 text-base md:text-xl font-medium">Habilidades</a>
+                        <a href="#contact" class="text-dark hover:text-indigo-400 px-3 py-2 text-base md:text-xl font-medium">Contacto</a>
                     </div>
                 </div>
             </div>
@@ -94,7 +94,7 @@
                 <a href="#about" class="text-dark hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Sobre Mi</a>
                 <a href="#projects" class="text-dark hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Projectos</a>
                 <a href="#skills" class="text-dark hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Habilidades</a>
-                <a href="#contact" class="text-dark hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Contactp</a>
+                <a href="#contact" class="text-dark hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Contacto</a>
             </div>
         </div>
     </nav>
@@ -150,7 +150,7 @@
                     <div class="relative group">
                         <div class="absolute -inset-1  rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-300"></div>
                         <div class="relative bg-gray-100 rounded-2xl overflow-hidden shadow-2xl">
-                            <img src="https://placehold.co/600x800" alt="Jhonathan Chaves" class="w-full h-auto transition-transform duration-500 group-hover:scale-105">
+                            <img src="./src/mia.jpg" alt="Jhonathan Chaves" class="w-full h-auto transition-transform duration-500 group-hover:scale-105">
                             <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
                                 <h3 class="text-white text-xl font-bold">Jhonathan Chaves Manzano</h3>
                                 <p class="text-gray-200">Full Stack Developer</p>
@@ -159,7 +159,7 @@
                     </div>
                     <div>
                         <div class="flex items-center mb-6">
-                            <div class="w-12 h-1 bg-indigo-600 mr-4"></div>
+                            <div class="w-12 h-1 bg-black mr-4"></div>
                             <h3 class="text-2xl font-bold">Full Stack Developer</h3>
                         </div>
                         
@@ -169,7 +169,7 @@
                         
                         <div class="mb-8 bg-gray-50 p-6 rounded-xl border border-gray-100 shadow-sm">
                             <h4 class="text-xl font-semibold mb-4 flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-600 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-black mr-2" viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
                                 </svg>
                                 Detalles Personales
@@ -195,10 +195,10 @@
                         </div>
                         
                         <div class="flex space-x-4">
-                            <a href="#contact" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-xl transition-colors shadow-md hover:shadow-lg">
+                            <a href="#contact" class="inline-block bg-black hover:bg-gray-700 text-white font-medium py-3 px-6 rounded-xl transition-colors shadow-xl hover:shadow-lg">
                                 Contáctame
                             </a>
-                            <a href="#projects" class="inline-block bg-white border border-indigo-600 text-indigo-600 hover:bg-indigo-50 font-medium py-3 px-6 rounded-xl transition-colors">
+                            <a href="#projects" class="inline-block bg-gray-200 border border-black text-black hover:bg-gray-400 font-medium py-3 px-6 rounded-xl transition-colors">
                                 Ver Proyectos
                             </a>
                         </div>
@@ -657,7 +657,7 @@
     <section id="contact" class="h-screen rounded-2xl max-w-[90%] flex flex-col justify-center items-center bg-white mx-auto relative">
         <!-- Correo en la esquina superior derecha -->
         <div class="absolute top-20 right-30">
-            <a href="mailto:developerjhony@gmail.com" class="text-lg underline font-bold hover:underline-offset-10 hover:text-gray-600">
+            <a href="mailto:developerjhony@gmail.com" class="text-lg font-[Arial] border-b-2 pb-1 font-bold hover:pb-3 hover:text-gray-600 transition-all duration-300 ease-in-out">
                 developerjhony@gmail.com
             </a>
         </div>
@@ -675,9 +675,9 @@
         
         <!-- Enlace a Fiverr -->
         <div class="mt-20">
-            <a href="https://www.fiverr.com/yourusername" target="_blank" 
-               class=" text-dark px-8 py-4 border-b-4 text-xl font-bold uppercase hover:text-gray-600 transition-colors font-[Arial] flex items-center">
-                <i class="fab fa-fiverr mr-3"></i>Contrátame aquí en Fiverr
+            <a href="https://www.fiverr.com/jh0ny2k2" target="_blank" 
+               class=" text-dark px-6 py-2 border-b-3 text-lg font-bold hover:text-gray-600 transition-colors font-[Arial] flex items-center">
+                <i class="fab fa-fiverr "></i>Contrátame aquí
             </a>
         </div>
     </section>
@@ -708,18 +708,30 @@
         });
         
         // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.querySelector('.mobile-menu-button');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
                 });
-                
-                // Close mobile menu if open
-                if (!mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
-                }
+            }
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
             });
         });
 
@@ -773,6 +785,8 @@
                 cursorDot.style.transform = 'translate(-50%, -50%) scale(1)';
             });
         });
+
+        
     </script>
 </body>
 </html>
